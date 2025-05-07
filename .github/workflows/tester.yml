@@ -18,7 +18,7 @@ jobs:
     permissions:
       id-token: write
       attestations: write
-    uses: opendeploy-org/ods-image-builder/.github/workflows/ods-image-bulider.yml@main
+    uses: opendeploy-org/ods-image-builder/.github/workflows/ods-image-bulider.yml@01f2fdbd27d501015c54f03564be7367b1da0512
     with:
       AWS_REGION: ${{ inputs.AWS_REGION }}
       SETUP_SECRIPT_URL: ${{ inputs.SETUP_SECRIPT_URL }}
