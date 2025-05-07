@@ -1,0 +1,28 @@
+name: Image Builder Tester
+
+on:
+  workflow_dispatch:
+    inputs:
+      AWS_REGION:
+        required: true
+        type: string
+      SETUP_SECRIPT_URL:
+        required: true
+        type: string
+      SETUP_SECRIPT_HASH:
+        required: true
+        type: string
+
+jobs:
+  call-builder:
+    permissions:
+      id-token: write
+      attestations: write
+    uses: opendeploy-org/ods-image-builder/.github/workflows/ods-image-bulider.yml@main
+    with:
+      AWS_REGION: ${{ inputs.AWS_REGION }}
+      SETUP_SECRIPT_URL: ${{ inputs.SETUP_SECRIPT_URL }}
+      SETUP_SECRIPT_HASH: ${{ inputs.SETUP_SECRIPT_HASH }}
+    secrets:
+      AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_ACCESS_SECRET: ${{ secrets.AWS_ACCESS_SECRET }}
